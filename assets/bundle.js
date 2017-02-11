@@ -30630,7 +30630,7 @@
 		switch (action.type) {
 			case 'GET_CATALOG_NAV':
 				return [].concat(_toConsumableArray(_catalogNav2.default));
-			case 'CHANGE_CATALOGNAV_ACTIVE_CLASS':
+			case 'SET_CATALOGNAV_ACTIVE_CLASS':
 				// for(let el of state){el.isActive = false;}
 				return state.map(function (el) {
 					if (el.path === action.payload) {
@@ -30657,6 +30657,11 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
+	
+	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
 	exports.default = reducer;
 	
 	var _products = __webpack_require__(/*! ../const/products */ 282);
@@ -30665,24 +30670,48 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-	
 	function reducer() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+			items: [],
+			limit: 0,
+			id: 'all'
+		};
 		var action = arguments[1];
 	
-		switch (action.type) {
-			// case 'FETCH_PRODUCTS':
-			// 	return [...products];
-			case 'FILTER_PRODUCTS':
-				console.log(action.payload);
-				var filtered = _products2.default.filter(function (el) {
-					return el.tags.includes(action.payload.id);
-				});
-				return [].concat(_toConsumableArray(filtered));
-			default:
-				return state;
-		}
+		var _ret = function () {
+			switch (action.type) {
+				// case 'FETCH_PRODUCTS':
+				// 	return [...products];
+				case 'FILTER_PRODUCTS':
+					var _ref = state || action.payload,
+					    id = _ref.id,
+					    limit = _ref.limit;
+	
+					var filtered = _products2.default.filter(function (el) {
+						return el.tags.includes(id);
+					});
+					var limited = filtered.length <= limit ? filtered : filtered.slice(0, limit);
+	
+					return {
+						v: _extends({}, state, { items: limited })
+					};
+	
+				case 'SET_PRODUCTS_LIMIT':
+					return {
+						v: _extends({}, state, { limit: action.payload })
+					};
+				case 'SET_PRODUCTS_TAG':
+					return {
+						v: _extends({}, state, { id: action.payload })
+					};
+				default:
+					return {
+						v: state
+					};
+			}
+		}();
+	
+		if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
 	}
 
 /***/ },
@@ -33901,11 +33930,22 @@
 		_createClass(Catalog, [{
 			key: 'render',
 			value: function render() {
+				var _props = this.props,
+				    products = _props.products,
+				    limit = _props.limit,
+				    filterProducts = _props.filterProducts,
+				    setProductsLimit = _props.setProductsLimit;
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: '' },
 					_react2.default.createElement(_CatalogNav2.default, null),
-					_react2.default.createElement(_Products2.default, { products: this.props.products })
+					_react2.default.createElement(_Products2.default, {
+						limit: limit,
+						products: products,
+						filterProducts: filterProducts,
+						setProductsLimit: setProductsLimit
+					})
 				);
 			}
 		}]);
@@ -33917,16 +33957,22 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
-			products: state.products
+			products: state.products.items,
+			limit: state.products.limit
 		};
 	};
-	// const mapDispatchToProps = dispatch => {
-	// 	return {
-	// 		filterProducts: str => dispatch({type: 'FILTER_PRODUCTS', payload: str})
-	// 	};
-	// };
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			filterProducts: function filterProducts() {
+				return dispatch({ type: 'FILTER_PRODUCTS' });
+			},
+			setProductsLimit: function setProductsLimit(num) {
+				return dispatch({ type: 'SET_PRODUCTS_LIMIT', payload: num });
+			}
+		};
+	};
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, null)(Catalog);
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Catalog);
 
 /***/ },
 /* 304 */
@@ -33960,7 +34006,7 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	// import { setActiveClass, getCatalogNav } from '../actions/actions';
-	
+	var INITIAL_LIMIT = 1;
 	
 	var CatalogNav = function (_Component) {
 		_inherits(CatalogNav, _Component);
@@ -33978,7 +34024,8 @@
 				this.props.setActiveClass('all');
 	
 				// this.props.fetchProducts();
-				this.props.filterProducts('all');
+				this.props.setProductsLimit(INITIAL_LIMIT);
+				this.props.filterProducts();
 			}
 		}, {
 			key: 'render',
@@ -33996,7 +34043,9 @@
 								{ href: 'javascript:void 0;', className: el.isActive ? 'active' : '',
 									onClick: function onClick() {
 										props.setActiveClass(el.path);
-										props.filterProducts({ id: el.path, limit: 8 });
+										props.setProductsTag(el.path);
+										props.setProductsLimit(INITIAL_LIMIT);
+										props.filterProducts();
 									}
 								},
 								el.name
@@ -34016,17 +34065,21 @@
 		// console.log(state);
 		return {
 			catalogNav: state.catalogNav
-			// hello: state.hello
 		};
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		return {
-			// fetchProducts: () => dispatch({type: 'FETCH_PRODUCTS'}),
-			filterProducts: function filterProducts(obj) {
-				return dispatch({ type: 'FILTER_PRODUCTS', payload: obj });
+			setProductsTag: function setProductsTag(str) {
+				return dispatch({ type: 'SET_PRODUCTS_TAG', payload: str });
+			},
+			setProductsLimit: function setProductsLimit(num) {
+				return dispatch({ type: 'SET_PRODUCTS_LIMIT', payload: num });
 			},
 			setActiveClass: function setActiveClass(str) {
-				return dispatch({ type: 'CHANGE_CATALOGNAV_ACTIVE_CLASS', payload: str });
+				return dispatch({ type: 'SET_CATALOGNAV_ACTIVE_CLASS', payload: str });
+			},
+			filterProducts: function filterProducts() {
+				return dispatch({ type: 'FILTER_PRODUCTS' });
 			},
 			getCatalogNav: function getCatalogNav() {
 				return dispatch({ type: 'GET_CATALOG_NAV' });
@@ -34035,44 +34088,6 @@
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(CatalogNav);
-	
-	// {nav.length ? nav.map((el,i) => (
-	// 	<li className="nav-item" key={i}>
-	// 		<a href="javascript:void 0;" 
-	// 			className={el.isActive ? 'active' : ''} 
-	// 			onClick={e => {
-	// 				this.props.filterProducts(el.path);
-	// 				this.props.setActiveClass(i);
-	// 			}}
-	// 		>
-	// 			{el.name}
-	// 		</a>
-	// 	</li>
-	// )) : 'Loading...'}
-	
-	
-	// <ul className="nav flex-column flex-sm-row justify-content-center main-nav">
-	// 	{!nav.length ? 'Loading...' : nav.map((el,i) => (
-	// 		<li className="nav-item" key={i}>
-	// 			<a href="javascript:void 0;" 
-	// 				className={el.isActive ? 'nav-link text-center active' : 'nav-link text-center'} 
-	// 				onClick={e => {
-	// 					this.props.setActiveClass({
-	// 						nav,
-	// 						i
-	// 					});
-	
-	// 					this.props.filterProducts({
-	// 						tag: el.path, 
-	// 						products
-	// 					});
-	// 				}}
-	// 			>
-	// 				{el.name}
-	// 			</a>
-	// 		</li>
-	// 	))}
-	// </ul>
 
 /***/ },
 /* 305 */
@@ -34094,7 +34109,10 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Products = function Products(props) {
-		var products = props.products;
+		var products = props.products,
+		    limit = props.limit,
+		    filterProducts = props.filterProducts,
+		    setProductsLimit = props.setProductsLimit;
 		// console.log(products);
 	
 		return _react2.default.createElement(
@@ -34146,7 +34164,20 @@
 						p.sale.exists ? sale : price
 					)
 				);
-			}) : 'No items...'
+			}) : 'No items...',
+			_react2.default.createElement(
+				"div",
+				null,
+				_react2.default.createElement(
+					"a",
+					{ href: "javascript:void 0;",
+						onClick: function onClick() {
+							setProductsLimit(limit + 1);
+							filterProducts();
+						} },
+					"Load more..."
+				)
+			)
 		);
 	};
 	

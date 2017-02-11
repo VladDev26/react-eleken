@@ -1,8 +1,10 @@
 import React from 'react';
 
 const Products = props => {
-	const {products, limit, filterProducts, setProductsLimit} = props;
-	// console.log(products);
+	const {
+		products, limit, filtered, 
+		setProductsLimit, limitProducts
+	} = props.properties;
 	
 	return(
     	<div className="products">
@@ -33,15 +35,15 @@ const Products = props => {
 				)
 			}) : 'No items...'}
 
-			{(
+			{filtered.length != limit ? (
 				<div>
 				<a href="javascript:void 0;" 
 					onClick={() => {
 						setProductsLimit(limit + 1);
-						filterProducts();
+						limitProducts();
 					}}>Load more...</a>
 				</div>
-			)}
+			) : null}
 		</div>
 	);
 };
