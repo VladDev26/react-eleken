@@ -1,0 +1,26 @@
+@import '_variables';
+// @import '_fonts';
+@import '_mixins';
+
+*{box-sizing:border-box;padding: 0;margin: 0;}
+a{
+	text-decoration:none;
+	color: #000;
+	&:focus, 
+	&:hover{text-decoration:none;color: #000;}
+}
+ul{list-style: none;}
+img{max-width: 100%; height: auto;}
+
+.wrapper{
+	padding: 0 1em;
+}
+
+@import 'parts/_header';
+@import 'parts/_home';
+@import 'parts/_catalog';
+@import 'parts/_products';
+
+
+@import '_queries';
+

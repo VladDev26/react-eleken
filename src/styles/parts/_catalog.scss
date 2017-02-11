@@ -1,0 +1,32 @@
+.catalog-nav{
+	font: 12px 'Lato', sans-serif;
+	text-transform: uppercase;
+	padding: 1em 0;
+	margin: 0 0 2em;
+	li{
+		margin-bottom: 1em; 
+		&:last-child{margin-bottom: 0;}
+	}
+	a{
+		color: $grey;
+		padding-right: 0;
+		padding-left: 0;
+		border-bottom: 2px solid transparent;
+		
+		&:hover{color: $black;}
+	}
+
+	.active{ color: $black; }
+
+	@include mQ(576px){
+		.active{
+			border-bottom: 2px solid $blue;
+		}
+		li{
+			margin: 0 4em 0 0;
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+	}
+}

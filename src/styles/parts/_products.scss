@@ -1,0 +1,46 @@
+.products{
+	font: 12px 'Lato', sans-serif;
+	text-align: center;
+	max-width: 1120px;
+	margin: 0 auto;
+	@include mQ(420px){ text-align: left; }
+
+	p{margin: 0; color: $grey;}
+	a{&:hover{opacity: .8;}}
+	&__item{
+		position: relative;
+		display: inline-block;
+		max-width: 262px;
+		vertical-align: top;
+		text-align: center;
+
+		@include mQ(420px, 579px){
+			@include grid(2, 2%);
+		}
+		@include mQ(580px, 767px){
+			@include grid(3, 2%);
+		}
+		@include mQ(768px){
+			@include grid(4, 2%);
+		}
+	}
+
+	&__new{
+		position: absolute;
+		z-index: 1;
+		text-transform: uppercase;
+		color: #fff;
+		background: red;
+		padding: 2px 6px;
+		border-radius: 1em;
+		font-size: 10px;
+		left: 0;
+		margin: 10px 0 0 10px;
+	}
+	&__sale{color: red;}
+	.line-through{
+		text-decoration: line-through;
+		margin-right: 5px;
+	}
+	
+}
