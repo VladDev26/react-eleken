@@ -5,8 +5,17 @@
 	margin: 0 auto;
 	@include mQ(420px){ text-align: left; }
 
-	p{margin: 0; color: $grey;}
-	a{&:hover{opacity: .8;}}
+	p{
+		margin: 0;
+		text-transform: capitalize;
+		font-size: 14px;
+		color: #000;
+	}
+	a{
+		display: inline-block;
+		color: $grey; 
+		&:hover{opacity: .8;}
+	}
 	&__item{
 		position: relative;
 		display: inline-block;
@@ -38,9 +47,19 @@
 		margin: 10px 0 0 10px;
 	}
 	&__sale{color: red;}
+
 	.line-through{
 		text-decoration: line-through;
 		margin-right: 5px;
+	}
+
+	&__more{
+		text-align: center;
+		a{
+			text-transform: uppercase;
+			padding: 1em;
+			font-size: 14px;
+		}
 	}
 	
 }

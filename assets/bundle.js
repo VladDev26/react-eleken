@@ -63,25 +63,25 @@
 	
 	var _configureStore2 = _interopRequireDefault(_configureStore);
 	
-	var _App = __webpack_require__(/*! ./containers/App */ 283);
+	var _App = __webpack_require__(/*! ./containers/App */ 286);
 	
 	var _App2 = _interopRequireDefault(_App);
 	
-	var _navbar = __webpack_require__(/*! ./const/navbar */ 302);
+	var _navbar = __webpack_require__(/*! ./const/navbar */ 303);
 	
 	var _navbar2 = _interopRequireDefault(_navbar);
 	
-	var _Sections = __webpack_require__(/*! ./components/Sections */ 306);
+	var _Sections = __webpack_require__(/*! ./components/Sections */ 307);
 	
-	var _Catalog = __webpack_require__(/*! ./containers/Catalog */ 303);
+	var _Catalog = __webpack_require__(/*! ./containers/Catalog */ 304);
 	
 	var _Catalog2 = _interopRequireDefault(_Catalog);
 	
-	__webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ 309);
+	__webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ 310);
 	
-	__webpack_require__(/*! react-select/dist/react-select.css */ 313);
+	__webpack_require__(/*! react-select/dist/react-select.css */ 314);
 	
-	__webpack_require__(/*! ./styles/index.scss */ 315);
+	__webpack_require__(/*! ./styles/index.scss */ 316);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30468,138 +30468,39 @@
 	
 	var _redux = __webpack_require__(/*! redux */ 189);
 	
-	var _first = __webpack_require__(/*! ./first */ 278);
-	
-	var first = _interopRequireWildcard(_first);
-	
-	var _catalogNavReducer = __webpack_require__(/*! ./catalogNavReducer */ 280);
+	var _catalogNavReducer = __webpack_require__(/*! ./catalogNavReducer */ 278);
 	
 	var _catalogNavReducer2 = _interopRequireDefault(_catalogNavReducer);
 	
-	var _productsReducer = __webpack_require__(/*! ./productsReducer */ 281);
+	var _productsReducer = __webpack_require__(/*! ./productsReducer */ 280);
 	
 	var _productsReducer2 = _interopRequireDefault(_productsReducer);
 	
+	var _currencyReducer = __webpack_require__(/*! ./currencyReducer */ 282);
+	
+	var _currencyReducer2 = _interopRequireDefault(_currencyReducer);
+	
+	var _languageReducer = __webpack_require__(/*! ./languageReducer */ 284);
+	
+	var _languageReducer2 = _interopRequireDefault(_languageReducer);
+	
+	var _subscribeReducer = __webpack_require__(/*! ./subscribeReducer */ 285);
+	
+	var _subscribeReducer2 = _interopRequireDefault(_subscribeReducer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-	
 	exports.default = (0, _redux.combineReducers)({
-		first: first,
+		language: _languageReducer2.default,
+		subscribe: _subscribeReducer2.default,
+		currency: _currencyReducer2.default,
 		catalogNav: _catalogNavReducer2.default,
 		products: _productsReducer2.default
 	});
+	// import * as first from './first';
 
 /***/ },
 /* 278 */
-/*!*******************************!*\
-  !*** ./src/reducers/first.js ***!
-  \*******************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	exports.changeCurrency = changeCurrency;
-	exports.changeLang = changeLang;
-	
-	var _catalogNav = __webpack_require__(/*! ../const/catalogNav */ 279);
-	
-	var _catalogNav2 = _interopRequireDefault(_catalogNav);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// export function filterProducts(state = {}, action) {
-	// 	switch (action.type) {
-	// 		case 'FILTER_PRODUCTS':
-	// 			return filter(action.payload);
-	// 		default:
-	// 			return state;
-	// 	}
-	// }
-	function changeCurrency() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-		var action = arguments[1];
-	
-		switch (action.type) {
-			case 'CHANGE_CURRENCY':
-				return action.payload;
-			default:
-				return state;
-		}
-	}
-	function changeLang() {
-		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-		var action = arguments[1];
-	
-		switch (action.type) {
-			case 'CHANGE_LANG':
-				return action.payload;
-			default:
-				return state;
-		}
-	}
-	
-	// export function getCatalogNav(state = [], action) {
-	// 	switch (action.type) {
-	// 		case 'GET_CATALOG_NAV':
-	// 			return catalogNav;
-	// 		case 'SET_ACTIVE_CLASS':
-	// 			let {nav, i} = action.payload;
-	
-	// 			// console.log(i);
-	// 			for(let el of nav){el.isActive = false;}
-	// 			nav[i].isActive = true;
-	// 			// console.log(nav);
-	// 			return nav;
-	// 		default:
-	// 			return state;
-	// 	}
-	// }
-
-/***/ },
-/* 279 */
-/*!*********************************!*\
-  !*** ./src/const/catalogNav.js ***!
-  \*********************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var catalogNav = [{
-		name: 'all',
-		path: 'all',
-		isActive: false
-	}, {
-		name: 't-shirts',
-		path: 't-shirts',
-		isActive: false
-	}, {
-		name: 'sweaters',
-		path: 'sweaters',
-		isActive: false
-	}, {
-		name: 'shorts',
-		path: 'shorts',
-		isActive: false
-	}, {
-		name: 'jackets',
-		path: 'jackets',
-		isActive: false
-	}, {
-		name: 'accessories',
-		path: 'accessories',
-		isActive: false
-	}];
-	exports.default = catalogNav;
-
-/***/ },
-/* 280 */
 /*!*******************************************!*\
   !*** ./src/reducers/catalogNavReducer.js ***!
   \*******************************************/
@@ -30646,7 +30547,46 @@
 	}
 
 /***/ },
-/* 281 */
+/* 279 */
+/*!*********************************!*\
+  !*** ./src/const/catalogNav.js ***!
+  \*********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var catalogNav = [{
+		name: 'all',
+		path: 'all',
+		isActive: false
+	}, {
+		name: 't-shirts',
+		path: 't-shirts',
+		isActive: false
+	}, {
+		name: 'sweaters',
+		path: 'sweaters',
+		isActive: false
+	}, {
+		name: 'shorts',
+		path: 'shorts',
+		isActive: false
+	}, {
+		name: 'jackets',
+		path: 'jackets',
+		isActive: false
+	}, {
+		name: 'accessories',
+		path: 'accessories',
+		isActive: false
+	}];
+	exports.default = catalogNav;
+
+/***/ },
+/* 280 */
 /*!*****************************************!*\
   !*** ./src/reducers/productsReducer.js ***!
   \*****************************************/
@@ -30664,7 +30604,7 @@
 	
 	exports.default = reducer;
 	
-	var _products = __webpack_require__(/*! ../const/products */ 282);
+	var _products = __webpack_require__(/*! ../const/products */ 281);
 	
 	var _products2 = _interopRequireDefault(_products);
 	
@@ -30673,49 +30613,50 @@
 	function reducer() {
 		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 			items: [],
+			filtered: [],
 			limit: 0,
-			id: 'all'
+			filter: 'all'
 		};
 		var action = arguments[1];
 	
-		var _ret = function () {
-			switch (action.type) {
-				// case 'FETCH_PRODUCTS':
-				// 	return [...products];
-				case 'FILTER_PRODUCTS':
-					var _ref = state || action.payload,
-					    id = _ref.id,
-					    limit = _ref.limit;
+		switch (action.type) {
+			case 'FILTER_PRODUCTS':
+				{
+					var _ret = function () {
+						var _ref = state || action.payload,
+						    filter = _ref.filter;
 	
-					var filtered = _products2.default.filter(function (el) {
-						return el.tags.includes(id);
-					});
+						var filtered = _products2.default.filter(function (el) {
+							return el.tags.includes(filter);
+						});
+	
+						return {
+							v: _extends({}, state, { filtered: filtered })
+						};
+					}();
+	
+					if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+				}
+			case 'LIMIT_PRODUCTS':
+				{
+					var filtered = state.filtered,
+					    limit = state.limit;
+	
 					var limited = filtered.length <= limit ? filtered : filtered.slice(0, limit);
 	
-					return {
-						v: _extends({}, state, { items: limited })
-					};
-	
-				case 'SET_PRODUCTS_LIMIT':
-					return {
-						v: _extends({}, state, { limit: action.payload })
-					};
-				case 'SET_PRODUCTS_TAG':
-					return {
-						v: _extends({}, state, { id: action.payload })
-					};
-				default:
-					return {
-						v: state
-					};
-			}
-		}();
-	
-		if ((typeof _ret === 'undefined' ? 'undefined' : _typeof(_ret)) === "object") return _ret.v;
+					return _extends({}, state, { items: limited });
+				}
+			case 'SET_PRODUCTS_LIMIT':
+				return _extends({}, state, { limit: action.payload });
+			case 'SET_PRODUCTS_FILTER':
+				return _extends({}, state, { filter: action.payload });
+			default:
+				return state;
+		}
 	}
 
 /***/ },
-/* 282 */
+/* 281 */
 /*!*******************************!*\
   !*** ./src/const/products.js ***!
   \*******************************/
@@ -30814,7 +30755,177 @@
 	exports.default = products;
 
 /***/ },
+/* 282 */
+/*!*****************************************!*\
+  !*** ./src/reducers/currencyReducer.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports.default = reducer;
+	
+	var _dropdowns = __webpack_require__(/*! ../const/dropdowns */ 283);
+	
+	function reducer() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+			currencies: [],
+			currency: null
+		};
+		var action = arguments[1];
+	
+		switch (action.type) {
+			case 'FETCH_CURRENCIES':
+				return _extends({}, state, { currencies: _dropdowns.currencies });
+	
+			case 'SET_CURRENCY':
+				var currency = action.payload;
+				console.log(currency);
+				return _extends({}, state, { currency: currency });
+	
+			default:
+				return state;
+		}
+	}
+	
+	// export default function reducer(state=[], action){
+	// 	switch(action.type){
+	// 		case 'GET_CATALOG_NAV':
+	// 			return [...catalogNav];
+	// 		case 'SET_CATALOGNAV_ACTIVE_CLASS':
+	// 			return state.map(el => {
+	// 				if(el.path === action.payload){
+	// 					return {...el, isActive: true };
+	// 				}else{
+	// 					return {...el, isActive: false };
+	// 				}
+	// 			});
+	// 		default:
+	// 			return state;
+	// 	}
+	// }
+
+/***/ },
 /* 283 */
+/*!********************************!*\
+  !*** ./src/const/dropdowns.js ***!
+  \********************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var currencies = exports.currencies = [{ value: 'us', label: 'DOLLARS' }, { value: 'ua', label: 'HRIVNAS' }];
+	
+	var languages = exports.languages = [{ value: 'en', label: 'EN' }, { value: 'ua', label: 'UA' }, { value: 'de', label: 'DE' }];
+
+/***/ },
+/* 284 */
+/*!*****************************************!*\
+  !*** ./src/reducers/languageReducer.js ***!
+  \*****************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports.default = reducer;
+	
+	var _dropdowns = __webpack_require__(/*! ../const/dropdowns */ 283);
+	
+	function reducer() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+			languages: [],
+			language: null
+		};
+		var action = arguments[1];
+	
+		switch (action.type) {
+			case 'FETCH_LANGUAGES':
+				return _extends({}, state, { languages: _dropdowns.languages });
+	
+			case 'SET_LANGUAGE':
+				var language = action.payload;
+				return _extends({}, state, { language: language });
+	
+			default:
+				return state;
+		}
+	}
+
+/***/ },
+/* 285 */
+/*!******************************************!*\
+  !*** ./src/reducers/subscribeReducer.js ***!
+  \******************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+	
+	exports.default = reducer;
+	function reducer() {
+		var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
+			value: null,
+			valid: false,
+			success: false
+		};
+		var action = arguments[1];
+	
+		switch (action.type) {
+			case 'SET_EMAIL':
+				{
+					var value = action.payload;
+					return _extends({}, state, { value: value });
+				}
+	
+			case 'VALIDATE_EMAIL':
+				{
+					var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+					var _value = state.value;
+					var checked = regex.test(_value);
+	
+					if (!checked) {
+						return _extends({}, state, { valid: false });
+					}
+	
+					return _extends({}, state, { valid: true });
+				}
+	
+			case 'MOCK_SENDING_EMAIL':
+				{
+					var valid = state.valid,
+					    success = state.success;
+	
+					if (!valid) return state;
+					return _extends({}, state, { success: true });
+				}
+	
+			default:
+				return state;
+		}
+	}
+
+/***/ },
+/* 286 */
 /*!*******************************!*\
   !*** ./src/containers/App.js ***!
   \*******************************/
@@ -30836,9 +30947,13 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 216);
 	
-	var _Header = __webpack_require__(/*! ../components/Header */ 284);
+	var _Header = __webpack_require__(/*! ../components/Header */ 287);
 	
 	var _Header2 = _interopRequireDefault(_Header);
+	
+	var _Subscribe = __webpack_require__(/*! ../components/Subscribe */ 309);
+	
+	var _Subscribe2 = _interopRequireDefault(_Subscribe);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -30868,28 +30983,15 @@
 				return _react2.default.createElement(
 					'div',
 					{ className: 'wrapper' },
-					this.props.children
+					_react2.default.createElement(_Header2.default, null),
+					this.props.children,
+					_react2.default.createElement(_Subscribe2.default, null)
 				);
 			}
 		}]);
 	
 		return App;
 	}(_react.Component);
-	// class App extends Component{
-	// 	componentDidMount(){
-	// 		browserHistory.push('catalog');
-	// 	}
-	
-	// 	render(){
-	// 		return(
-	// 			<div className="wrapper">
-	// 				<Header />
-	// 				{this.props.children}
-	// 			</div>
-	// 		);
-	// 	}
-	// }
-	
 	
 	var mapStateToProps = function mapStateToProps(state) {
 		return {};
@@ -30901,7 +31003,7 @@
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps, null, { pure: false })(App);
 
 /***/ },
-/* 284 */
+/* 287 */
 /*!**********************************!*\
   !*** ./src/components/Header.js ***!
   \**********************************/
@@ -30917,17 +31019,13 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Dropdown = __webpack_require__(/*! ../containers/Dropdown */ 285);
+	var _Dropdown = __webpack_require__(/*! ../containers/Dropdown */ 288);
 	
 	var _Dropdown2 = _interopRequireDefault(_Dropdown);
 	
-	var _Navbar = __webpack_require__(/*! ./Navbar */ 301);
+	var _Navbar = __webpack_require__(/*! ./Navbar */ 302);
 	
 	var _Navbar2 = _interopRequireDefault(_Navbar);
-	
-	var _Logo = __webpack_require__(/*! ./Logo */ 307);
-	
-	var _Logo2 = _interopRequireDefault(_Logo);
 	
 	var _Cart = __webpack_require__(/*! ./Cart */ 308);
 	
@@ -30982,17 +31080,26 @@
 			_react2.default.createElement(
 				'div',
 				{ className: 'header__bottom' },
-				_react2.default.createElement(_Logo2.default, null),
+				_react2.default.createElement(
+					'div',
+					{ className: 'col-12 text-center logo' },
+					_react2.default.createElement(
+						'a',
+						{ href: '#' },
+						_react2.default.createElement('img', { alt: 'logo', className: 'img-fluid',
+							src: 'http://vladdev.zzz.com.ua/examples/eleken/images/logo.jpg' })
+					)
+				),
 				_react2.default.createElement(_Navbar2.default, null),
 				_react2.default.createElement(_Cart2.default, null)
 			)
 		);
 	};
-	
+	// import Logo from './Logo';
 	exports.default = Header;
 
 /***/ },
-/* 285 */
+/* 288 */
 /*!************************************!*\
   !*** ./src/containers/Dropdown.js ***!
   \************************************/
@@ -31012,13 +31119,9 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
 	
-	var _reactSelect = __webpack_require__(/*! react-select */ 286);
+	var _reactSelect = __webpack_require__(/*! react-select */ 289);
 	
 	var _reactSelect2 = _interopRequireDefault(_reactSelect);
-	
-	var _actions = __webpack_require__(/*! ../actions/actions */ 299);
-	
-	var _dropdowns = __webpack_require__(/*! ../const/dropdowns */ 300);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -31040,30 +31143,46 @@
 		_createClass(Dropdown, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				this.props.setCurrency(_dropdowns.currencies[0]);
-				this.props.setLang(_dropdowns.languages[0]);
+				this.props.fetchCurrencies();
+				this.props.setCurrency('us');
+	
+				this.props.fetchLanguages();
+				this.props.setLanguage('en');
 			}
 		}, {
 			key: 'render',
 			value: function render() {
-				var props = this.props;
+				var _props = this.props,
+				    currencies = _props.currencies,
+				    currency = _props.currency,
+				    languages = _props.languages,
+				    language = _props.language,
+				    fetchCurrencies = _props.fetchCurrencies,
+				    setCurrency = _props.setCurrency,
+				    fetchLanguages = _props.fetchLanguages,
+				    setLanguage = _props.setLanguage;
+	
 				return _react2.default.createElement(
 					'div',
 					{ className: 'dropdown' },
 					_react2.default.createElement(_reactSelect2.default, { className: 'dropdown__select dropdown__select--curr',
 						clearable: false,
 						searchable: false,
-						value: props.currency,
-						options: _dropdowns.currencies,
-						onChange: props.setCurrency
+						value: currency,
+						options: currencies,
+						onChange: function onChange(e) {
+							return setCurrency(e.value);
+						}
 					}),
 					_react2.default.createElement('span', { className: 'dropdown__greyline' }),
 					_react2.default.createElement(_reactSelect2.default, { className: 'dropdown__select dropdown__select--lang',
 						clearable: false,
 						searchable: false,
-						value: props.lang,
-						options: _dropdowns.languages,
-						onChange: props.setLang
+						value: language,
+						options: languages,
+						onChange: function onChange(e) {
+							return setLanguage(e.value);
+						}
 					})
 				);
 			}
@@ -31076,80 +31195,35 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
-			currency: state.changeCurrency.value,
-			lang: state.changeLang.value
+			currencies: state.currency.currencies,
+			currency: state.currency.currency,
+	
+			languages: state.language.languages,
+			language: state.language.language
 		};
 	};
 	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
 		return {
-			setCurrency: function setCurrency(obj) {
-				return dispatch((0, _actions.changeCurrency)(obj));
+			fetchCurrencies: function fetchCurrencies() {
+				return dispatch({ type: 'FETCH_CURRENCIES' });
 			},
-			setLang: function setLang(obj) {
-				return dispatch((0, _actions.changeLang)(obj));
+			setCurrency: function setCurrency(str) {
+				return dispatch({ type: 'SET_CURRENCY', payload: str });
+			},
+	
+			fetchLanguages: function fetchLanguages() {
+				return dispatch({ type: 'FETCH_LANGUAGES' });
+			},
+			setLanguage: function setLanguage(str) {
+				return dispatch({ type: 'SET_LANGUAGE', payload: str });
 			}
 		};
 	};
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps, null, { pure: false })(Dropdown);
-	
-	// const Dropdown = props => {
-	// 	let dropdown = (
-	// 		<div className="dropdown-menu">
-	// 			<a className="dropdown-item" href="#">dollars</a>
-	// 			<a className="dropdown-item" href="#">hrivnas</a>
-	// 			<a className="dropdown-item" href="#">euros</a>
-	// 		</div>
-	// 	);
-	// 	return(
-	// 		<div className="dropdown show">
-	// 			<button className="btn btn-secondary dropdown-toggle">
-	// 				hello
-	// 			</button>
-	
-	// 			{dropdown}
-	// 		</div>
-	// 	);
-	// };
-	
-	// export default Dropdown;
-	
-	
-	// import React, {Component} from 'react';
-	
-	// class Dropdown extends Component{
-	// 	render(){
-	// 		let dropdown = (
-	// 			<div className="dropdown-menu">
-	// 				<a className="dropdown-item" href="#" 
-	// 					onClick={e => this.hello2(e, 'dollars')}
-	// 				>dollars</a>
-	// 				<a className="dropdown-item" href="#" 
-	// 					onClick={e => this.hello2(e, 'hrivnas')}
-	// 				>hrivnas</a>
-	// 				<a className="dropdown-item" href="#" 
-	// 					onClick={e => this.hello2(e, 'euros')}
-	// 				>euros</a>
-	// 			</div>
-	// 		);
-	// 		let state = this.state;
-	// 		return(
-	// 			<div className="dropdown show">
-	// 				<button className="btn btn-secondary dropdown-toggle"
-	// 					onClick={this.hello.bind(this)}>
-	// 					{state.aaa}
-	// 				</button>
-	
-	// 				{!state.flag ? null : dropdown}
-	// 			</div>
-	// 		);
-	// 	}
-	// };
-	
-	// export default Dropdown;
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Dropdown);
 
 /***/ },
-/* 286 */
+/* 289 */
 /*!**************************************!*\
   !*** ./~/react-select/lib/Select.js ***!
   \**************************************/
@@ -31183,47 +31257,47 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _reactInputAutosize = __webpack_require__(/*! react-input-autosize */ 287);
+	var _reactInputAutosize = __webpack_require__(/*! react-input-autosize */ 290);
 	
 	var _reactInputAutosize2 = _interopRequireDefault(_reactInputAutosize);
 	
-	var _classnames = __webpack_require__(/*! classnames */ 288);
+	var _classnames = __webpack_require__(/*! classnames */ 291);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _utilsDefaultArrowRenderer = __webpack_require__(/*! ./utils/defaultArrowRenderer */ 289);
+	var _utilsDefaultArrowRenderer = __webpack_require__(/*! ./utils/defaultArrowRenderer */ 292);
 	
 	var _utilsDefaultArrowRenderer2 = _interopRequireDefault(_utilsDefaultArrowRenderer);
 	
-	var _utilsDefaultFilterOptions = __webpack_require__(/*! ./utils/defaultFilterOptions */ 290);
+	var _utilsDefaultFilterOptions = __webpack_require__(/*! ./utils/defaultFilterOptions */ 293);
 	
 	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
 	
-	var _utilsDefaultMenuRenderer = __webpack_require__(/*! ./utils/defaultMenuRenderer */ 292);
+	var _utilsDefaultMenuRenderer = __webpack_require__(/*! ./utils/defaultMenuRenderer */ 295);
 	
 	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
 	
-	var _utilsDefaultClearRenderer = __webpack_require__(/*! ./utils/defaultClearRenderer */ 293);
+	var _utilsDefaultClearRenderer = __webpack_require__(/*! ./utils/defaultClearRenderer */ 296);
 	
 	var _utilsDefaultClearRenderer2 = _interopRequireDefault(_utilsDefaultClearRenderer);
 	
-	var _Async = __webpack_require__(/*! ./Async */ 294);
+	var _Async = __webpack_require__(/*! ./Async */ 297);
 	
 	var _Async2 = _interopRequireDefault(_Async);
 	
-	var _AsyncCreatable = __webpack_require__(/*! ./AsyncCreatable */ 295);
+	var _AsyncCreatable = __webpack_require__(/*! ./AsyncCreatable */ 298);
 	
 	var _AsyncCreatable2 = _interopRequireDefault(_AsyncCreatable);
 	
-	var _Creatable = __webpack_require__(/*! ./Creatable */ 296);
+	var _Creatable = __webpack_require__(/*! ./Creatable */ 299);
 	
 	var _Creatable2 = _interopRequireDefault(_Creatable);
 	
-	var _Option = __webpack_require__(/*! ./Option */ 297);
+	var _Option = __webpack_require__(/*! ./Option */ 300);
 	
 	var _Option2 = _interopRequireDefault(_Option);
 	
-	var _Value = __webpack_require__(/*! ./Value */ 298);
+	var _Value = __webpack_require__(/*! ./Value */ 301);
 	
 	var _Value2 = _interopRequireDefault(_Value);
 	
@@ -32384,7 +32458,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 287 */
+/* 290 */
 /*!*****************************************************!*\
   !*** ./~/react-input-autosize/lib/AutosizeInput.js ***!
   \*****************************************************/
@@ -32521,7 +32595,7 @@
 	module.exports = AutosizeInput;
 
 /***/ },
-/* 288 */
+/* 291 */
 /*!*******************************!*\
   !*** ./~/classnames/index.js ***!
   \*******************************/
@@ -32578,7 +32652,7 @@
 
 
 /***/ },
-/* 289 */
+/* 292 */
 /*!**********************************************************!*\
   !*** ./~/react-select/lib/utils/defaultArrowRenderer.js ***!
   \**********************************************************/
@@ -32610,7 +32684,7 @@
 	module.exports = exports["default"];
 
 /***/ },
-/* 290 */
+/* 293 */
 /*!**********************************************************!*\
   !*** ./~/react-select/lib/utils/defaultFilterOptions.js ***!
   \**********************************************************/
@@ -32620,7 +32694,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _stripDiacritics = __webpack_require__(/*! ./stripDiacritics */ 291);
+	var _stripDiacritics = __webpack_require__(/*! ./stripDiacritics */ 294);
 	
 	var _stripDiacritics2 = _interopRequireDefault(_stripDiacritics);
 	
@@ -32660,7 +32734,7 @@
 	module.exports = filterOptions;
 
 /***/ },
-/* 291 */
+/* 294 */
 /*!*****************************************************!*\
   !*** ./~/react-select/lib/utils/stripDiacritics.js ***!
   \*****************************************************/
@@ -32678,7 +32752,7 @@
 	};
 
 /***/ },
-/* 292 */
+/* 295 */
 /*!*********************************************************!*\
   !*** ./~/react-select/lib/utils/defaultMenuRenderer.js ***!
   \*********************************************************/
@@ -32688,7 +32762,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 	
-	var _classnames = __webpack_require__(/*! classnames */ 288);
+	var _classnames = __webpack_require__(/*! classnames */ 291);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -32747,7 +32821,7 @@
 	module.exports = menuRenderer;
 
 /***/ },
-/* 293 */
+/* 296 */
 /*!**********************************************************!*\
   !*** ./~/react-select/lib/utils/defaultClearRenderer.js ***!
   \**********************************************************/
@@ -32777,7 +32851,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 294 */
+/* 297 */
 /*!*************************************!*\
   !*** ./~/react-select/lib/Async.js ***!
   \*************************************/
@@ -32807,11 +32881,11 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 286);
+	var _Select = __webpack_require__(/*! ./Select */ 289);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
-	var _utilsStripDiacritics = __webpack_require__(/*! ./utils/stripDiacritics */ 291);
+	var _utilsStripDiacritics = __webpack_require__(/*! ./utils/stripDiacritics */ 294);
 	
 	var _utilsStripDiacritics2 = _interopRequireDefault(_utilsStripDiacritics);
 	
@@ -33050,7 +33124,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 295 */
+/* 298 */
 /*!**********************************************!*\
   !*** ./~/react-select/lib/AsyncCreatable.js ***!
   \**********************************************/
@@ -33066,7 +33140,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 286);
+	var _Select = __webpack_require__(/*! ./Select */ 289);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
@@ -33114,7 +33188,7 @@
 	module.exports = AsyncCreatable;
 
 /***/ },
-/* 296 */
+/* 299 */
 /*!*****************************************!*\
   !*** ./~/react-select/lib/Creatable.js ***!
   \*****************************************/
@@ -33132,15 +33206,15 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Select = __webpack_require__(/*! ./Select */ 286);
+	var _Select = __webpack_require__(/*! ./Select */ 289);
 	
 	var _Select2 = _interopRequireDefault(_Select);
 	
-	var _utilsDefaultFilterOptions = __webpack_require__(/*! ./utils/defaultFilterOptions */ 290);
+	var _utilsDefaultFilterOptions = __webpack_require__(/*! ./utils/defaultFilterOptions */ 293);
 	
 	var _utilsDefaultFilterOptions2 = _interopRequireDefault(_utilsDefaultFilterOptions);
 	
-	var _utilsDefaultMenuRenderer = __webpack_require__(/*! ./utils/defaultMenuRenderer */ 292);
+	var _utilsDefaultMenuRenderer = __webpack_require__(/*! ./utils/defaultMenuRenderer */ 295);
 	
 	var _utilsDefaultMenuRenderer2 = _interopRequireDefault(_utilsDefaultMenuRenderer);
 	
@@ -33438,7 +33512,7 @@
 	module.exports = Creatable;
 
 /***/ },
-/* 297 */
+/* 300 */
 /*!**************************************!*\
   !*** ./~/react-select/lib/Option.js ***!
   \**************************************/
@@ -33452,7 +33526,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(/*! classnames */ 288);
+	var _classnames = __webpack_require__(/*! classnames */ 291);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -33557,7 +33631,7 @@
 	module.exports = Option;
 
 /***/ },
-/* 298 */
+/* 301 */
 /*!*************************************!*\
   !*** ./~/react-select/lib/Value.js ***!
   \*************************************/
@@ -33571,7 +33645,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _classnames = __webpack_require__(/*! classnames */ 288);
+	var _classnames = __webpack_require__(/*! classnames */ 291);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
@@ -33671,121 +33745,7 @@
 	module.exports = Value;
 
 /***/ },
-/* 299 */
-/*!********************************!*\
-  !*** ./src/actions/actions.js ***!
-  \********************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.setActiveClass = setActiveClass;
-	exports.filterProducts = filterProducts;
-	exports.changeCurrency = changeCurrency;
-	exports.changeLang = changeLang;
-	exports.getCatalogNav = getCatalogNav;
-	exports.setCatalogNav = setCatalogNav;
-	// function authHasErrored(bool) {
-	//     return {
-	//         type: 'AUTH_HAS_ERRORED',
-	//         hasErrored: bool
-	//     };
-	// }
-	
-	// function authSetToken(token) {
-	//     return {
-	//         type: 'AUTH_SET_TOKEN',
-	//         authToken: token
-	//     };
-	// }
-	
-	
-	function setActiveClass(obj) {
-	    return {
-	        type: 'SET_ACTIVE_CLASS',
-	        payload: obj
-	    };
-	}
-	
-	function filterProducts(obj) {
-	    return {
-	        type: 'FILTER_PRODUCTS',
-	        payload: obj
-	    };
-	}
-	
-	function changeCurrency(obj) {
-	    return {
-	        type: 'CHANGE_CURRENCY',
-	        payload: obj
-	    };
-	}
-	
-	function changeLang(obj) {
-	    return {
-	        type: 'CHANGE_LANG',
-	        payload: obj
-	    };
-	}
-	
-	function getCatalogNav(arr) {
-	    return {
-	        type: 'GET_CATALOG_NAV',
-	        payload: arr
-	    };
-	}
-	
-	function setCatalogNav(obj) {
-	    return {
-	        type: 'SET_CATALOG_NAV',
-	        payload: obj
-	    };
-	}
-	
-	// export default function authAuthorize(event, url, username, password){
-	// 	return dispatch => {
-	// 		event.preventDefault();
-	// 		if( validateAuth(username, password, dispatch)) return null;
-	
-	// 		requestAuth(url, username, password, dispatch)
-	// 			.then(data => {
-	// 				if(!data.success) {
-	// 					dispatch(authShowAlert(AuthAlerts.serverError(data.message)));
-	// 					return dispatch(authHasErrored(true));
-	// 				}
-	// 				dispatch(authSetLogin(username));
-	// 				dispatch(authSetToken(data.token));
-	// 				dispatch(authIsLogged(true));
-	// 				dispatch(authHasErrored(false));
-	// 				return {
-	// 			        type: 'AUTHORIZE',
-	// 			        data
-	// 			    };
-	// 			});
-	// 	};
-	// }
-
-/***/ },
-/* 300 */
-/*!********************************!*\
-  !*** ./src/const/dropdowns.js ***!
-  \********************************/
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	var currencies = exports.currencies = [{ value: 'us', label: 'DOLLARS' }, { value: 'ua', label: 'HRIVNAS' }];
-	
-	var languages = exports.languages = [{ value: 'en', label: 'EN' }, { value: 'ua', label: 'UA' }, { value: 'de', label: 'DE' }];
-
-/***/ },
-/* 301 */
+/* 302 */
 /*!**********************************!*\
   !*** ./src/components/Navbar.js ***!
   \**********************************/
@@ -33803,7 +33763,7 @@
 	
 	var _reactRouter = __webpack_require__(/*! react-router */ 216);
 	
-	var _navbar = __webpack_require__(/*! ../const/navbar */ 302);
+	var _navbar = __webpack_require__(/*! ../const/navbar */ 303);
 	
 	var _navbar2 = _interopRequireDefault(_navbar);
 	
@@ -33834,7 +33794,7 @@
 	exports.default = Navbar;
 
 /***/ },
-/* 302 */
+/* 303 */
 /*!*****************************!*\
   !*** ./src/const/navbar.js ***!
   \*****************************/
@@ -33846,11 +33806,11 @@
 		value: true
 	});
 	
-	var _Catalog = __webpack_require__(/*! ../containers/Catalog */ 303);
+	var _Catalog = __webpack_require__(/*! ../containers/Catalog */ 304);
 	
 	var _Catalog2 = _interopRequireDefault(_Catalog);
 	
-	var _Sections = __webpack_require__(/*! ../components/Sections */ 306);
+	var _Sections = __webpack_require__(/*! ../components/Sections */ 307);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -33882,7 +33842,7 @@
 	exports.default = navbar;
 
 /***/ },
-/* 303 */
+/* 304 */
 /*!***********************************!*\
   !*** ./src/containers/Catalog.js ***!
   \***********************************/
@@ -33902,11 +33862,11 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
 	
-	var _CatalogNav = __webpack_require__(/*! ../components/CatalogNav */ 304);
+	var _CatalogNav = __webpack_require__(/*! ../components/CatalogNav */ 305);
 	
 	var _CatalogNav2 = _interopRequireDefault(_CatalogNav);
 	
-	var _Products = __webpack_require__(/*! ../components/Products */ 305);
+	var _Products = __webpack_require__(/*! ../components/Products */ 306);
 	
 	var _Products2 = _interopRequireDefault(_Products);
 	
@@ -33928,24 +33888,23 @@
 		}
 	
 		_createClass(Catalog, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.props.getCatalogNav();
+				this.props.setActiveClass('all');
+	
+				this.props.setProductsLimit(1);
+				this.props.filterProducts();
+				this.props.limitProducts();
+			}
+		}, {
 			key: 'render',
 			value: function render() {
-				var _props = this.props,
-				    products = _props.products,
-				    limit = _props.limit,
-				    filterProducts = _props.filterProducts,
-				    setProductsLimit = _props.setProductsLimit;
-	
 				return _react2.default.createElement(
-					'div',
-					{ className: '' },
-					_react2.default.createElement(_CatalogNav2.default, null),
-					_react2.default.createElement(_Products2.default, {
-						limit: limit,
-						products: products,
-						filterProducts: filterProducts,
-						setProductsLimit: setProductsLimit
-					})
+					'main',
+					null,
+					_react2.default.createElement(_CatalogNav2.default, { properties: this.props }),
+					_react2.default.createElement(_Products2.default, { properties: this.props })
 				);
 			}
 		}]);
@@ -33957,7 +33916,9 @@
 	
 	var mapStateToProps = function mapStateToProps(state) {
 		return {
+			catalogNav: state.catalogNav,
 			products: state.products.items,
+			filtered: state.products.filtered,
 			limit: state.products.limit
 		};
 	};
@@ -33966,131 +33927,158 @@
 			filterProducts: function filterProducts() {
 				return dispatch({ type: 'FILTER_PRODUCTS' });
 			},
+			limitProducts: function limitProducts() {
+				return dispatch({ type: 'LIMIT_PRODUCTS' });
+			},
+	
+			getCatalogNav: function getCatalogNav() {
+				return dispatch({ type: 'GET_CATALOG_NAV' });
+			},
 			setProductsLimit: function setProductsLimit(num) {
 				return dispatch({ type: 'SET_PRODUCTS_LIMIT', payload: num });
+			},
+			setProductsFilter: function setProductsFilter(str) {
+				return dispatch({ type: 'SET_PRODUCTS_FILTER', payload: str });
+			},
+			setActiveClass: function setActiveClass(str) {
+				return dispatch({ type: 'SET_CATALOGNAV_ACTIVE_CLASS', payload: str });
 			}
 		};
 	};
 	
 	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Catalog);
+	
+	// class Catalog extends Component{
+	// 	componentDidMount(){
+	// 		this.props.getCatalogNav();
+	// 		this.props.setActiveClass('all');
+	
+	// 		this.props.setProductsLimit(1);
+	// 		this.props.filterProducts();
+	// 	}
+	// 	render(){
+	// 		let {
+	// 			products, limit, catalogNav,
+	// 			filterProducts, setProductsLimit,
+	// 			getCatalogNav, setActiveClass, setProductsTag
+	// 		} = this.props;
+	// 		return (
+	// 			<div className="">
+	// 				<CatalogNav 
+	// 					catalogNav={catalogNav}
+	// 					setActiveClass={setActiveClass} 
+	// 					setProductsTag={setProductsTag}
+	// 					setProductsLimit={setProductsLimit}
+	// 					filterProducts={filterProducts}
+	// 				/>
+	// 				<Products 
+	// 					limit={limit}
+	// 					products={products} 
+	// 					filterProducts={filterProducts}
+	// 					setProductsLimit={setProductsLimit}
+	// 				/>
+	// 			</div>
+	// 		);
+	// 	}
+	// };
 
 /***/ },
-/* 304 */
+/* 305 */
 /*!**************************************!*\
   !*** ./src/components/CatalogNav.js ***!
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _reactRouter = __webpack_require__(/*! react-router */ 216);
-	
-	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var CatalogNav = function CatalogNav(props) {
+		var productsLimit = 1;
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+		var _props$properties = props.properties,
+		    catalogNav = _props$properties.catalogNav,
+		    setActiveClass = _props$properties.setActiveClass,
+		    setProductsFilter = _props$properties.setProductsFilter,
+		    setProductsLimit = _props$properties.setProductsLimit,
+		    filterProducts = _props$properties.filterProducts,
+		    limitProducts = _props$properties.limitProducts;
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
-	// import { setActiveClass, getCatalogNav } from '../actions/actions';
-	var INITIAL_LIMIT = 1;
-	
-	var CatalogNav = function (_Component) {
-		_inherits(CatalogNav, _Component);
-	
-		function CatalogNav() {
-			_classCallCheck(this, CatalogNav);
-	
-			return _possibleConstructorReturn(this, (CatalogNav.__proto__ || Object.getPrototypeOf(CatalogNav)).apply(this, arguments));
+		function handleClick(path) {
+			setActiveClass(path);
+			setProductsFilter(path);
+			setProductsLimit(productsLimit);
+			filterProducts();
+			limitProducts();
 		}
 	
-		_createClass(CatalogNav, [{
-			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this.props.getCatalogNav();
-				this.props.setActiveClass('all');
-	
-				// this.props.fetchProducts();
-				this.props.setProductsLimit(INITIAL_LIMIT);
-				this.props.filterProducts();
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var props = this.props;
+		return _react2.default.createElement(
+			"ul",
+			{ className: "nav flex-column flex-sm-row justify-content-center catalog-nav" },
+			catalogNav.map(function (el) {
 				return _react2.default.createElement(
-					'ul',
-					{ className: 'nav flex-column flex-sm-row justify-content-center catalog-nav' },
-					props.catalogNav.map(function (el) {
-						return _react2.default.createElement(
-							'li',
-							{ key: el.path },
-							_react2.default.createElement(
-								'a',
-								{ href: 'javascript:void 0;', className: el.isActive ? 'active' : '',
-									onClick: function onClick() {
-										props.setActiveClass(el.path);
-										props.setProductsTag(el.path);
-										props.setProductsLimit(INITIAL_LIMIT);
-										props.filterProducts();
-									}
-								},
-								el.name
-							)
-						);
-					})
+					"li",
+					{ key: el.path },
+					_react2.default.createElement(
+						"a",
+						{ href: "javascript:void 0;",
+							className: el.isActive ? 'active' : '',
+							onClick: function onClick() {
+								return handleClick(el.path);
+							}
+						},
+						el.name
+					)
 				);
-			}
-		}]);
-	
-		return CatalogNav;
-	}(_react.Component);
-	
-	;
-	
-	var mapStateToProps = function mapStateToProps(state) {
-		// console.log(state);
-		return {
-			catalogNav: state.catalogNav
-		};
+			})
+		);
 	};
-	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
-		return {
-			setProductsTag: function setProductsTag(str) {
-				return dispatch({ type: 'SET_PRODUCTS_TAG', payload: str });
-			},
-			setProductsLimit: function setProductsLimit(num) {
-				return dispatch({ type: 'SET_PRODUCTS_LIMIT', payload: num });
-			},
-			setActiveClass: function setActiveClass(str) {
-				return dispatch({ type: 'SET_CATALOGNAV_ACTIVE_CLASS', payload: str });
-			},
-			filterProducts: function filterProducts() {
-				return dispatch({ type: 'FILTER_PRODUCTS' });
-			},
-			getCatalogNav: function getCatalogNav() {
-				return dispatch({ type: 'GET_CATALOG_NAV' });
-			}
-		};
-	};
+	exports.default = CatalogNav;
 	
-	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(CatalogNav);
+	// const CatalogNav = props => {
+	// 	const productsLimit = 1;
+	
+	// 	let {
+	// 		catalogNav, setActiveClass, setProductsFilter, 
+	// 		setProductsLimit, filterProducts, limitProducts
+	// 	} = props.properties;
+	
+	// 	function handleClick(path){
+	// 		setActiveClass(path);
+	// 		setProductsFilter(path);
+	// 		setProductsLimit(productsLimit);
+	// 		filterProducts();
+	// 		limitProducts();
+	// 	}
+	
+	// 	return(
+	// 		<ul className="nav flex-column flex-sm-row justify-content-center catalog-nav">
+	// 			{catalogNav.map(el => (
+	// 				<li key={el.path}>
+	// 					<a href="javascript:void 0;" 
+	// 						className={el.isActive ? 'active' : ''} 
+	// 						onClick={ () => handleClick(el.path) }
+	// 					>
+	// 						{el.name}
+	// 					</a>
+	// 				</li>
+	// 			))}
+	// 		</ul>
+	// 	);
+	// };
+	// export default CatalogNav;
 
 /***/ },
-/* 305 */
+/* 306 */
 /*!************************************!*\
   !*** ./src/components/Products.js ***!
   \************************************/
@@ -34109,11 +34097,27 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var Products = function Products(props) {
-		var products = props.products,
-		    limit = props.limit,
-		    filterProducts = props.filterProducts,
-		    setProductsLimit = props.setProductsLimit;
-		// console.log(products);
+		var _props$properties = props.properties,
+		    products = _props$properties.products,
+		    limit = _props$properties.limit,
+		    filtered = _props$properties.filtered,
+		    setProductsLimit = _props$properties.setProductsLimit,
+		    limitProducts = _props$properties.limitProducts;
+	
+	
+		var moreBtn = _react2.default.createElement(
+			"div",
+			{ className: "products__more" },
+			_react2.default.createElement(
+				"a",
+				{ href: "javascript:void 0;",
+					onClick: function onClick() {
+						setProductsLimit(limit + 1);
+						limitProducts();
+					} },
+				"Load more..."
+			)
+		);
 	
 		return _react2.default.createElement(
 			"div",
@@ -34165,26 +34169,14 @@
 					)
 				);
 			}) : 'No items...',
-			_react2.default.createElement(
-				"div",
-				null,
-				_react2.default.createElement(
-					"a",
-					{ href: "javascript:void 0;",
-						onClick: function onClick() {
-							setProductsLimit(limit + 1);
-							filterProducts();
-						} },
-					"Load more..."
-				)
-			)
+			filtered.length != limit ? moreBtn : null
 		);
 	};
 	
 	exports.default = Products;
 
 /***/ },
-/* 306 */
+/* 307 */
 /*!************************************!*\
   !*** ./src/components/Sections.js ***!
   \************************************/
@@ -34240,40 +34232,6 @@
 	};
 
 /***/ },
-/* 307 */
-/*!********************************!*\
-  !*** ./src/components/Logo.js ***!
-  \********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Logo = function Logo(props) {
-		return _react2.default.createElement(
-			"div",
-			{ className: "col-12 text-center logo" },
-			_react2.default.createElement(
-				"a",
-				{ href: "#" },
-				_react2.default.createElement("img", { alt: "logo", className: "img-fluid",
-					src: "http://vladdev.zzz.com.ua/examples/eleken/images/logo.jpg" })
-			)
-		);
-	};
-	
-	exports.default = Logo;
-
-/***/ },
 /* 308 */
 /*!********************************!*\
   !*** ./src/components/Cart.js ***!
@@ -34326,6 +34284,109 @@
 
 /***/ },
 /* 309 */
+/*!*************************************!*\
+  !*** ./src/components/Subscribe.js ***!
+  \*************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactRedux = __webpack_require__(/*! react-redux */ 178);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var Subscribe = function Subscribe(props) {
+		var setEmail = props.setEmail,
+		    validateEmail = props.validateEmail,
+		    sendEmail = props.sendEmail,
+		    isValid = props.isValid,
+		    success = props.success;
+	
+	
+		var submit = _react2.default.createElement(
+			'span',
+			{ className: 'submit', onClick: handleSubmit },
+			'>'
+		);
+		var form = _react2.default.createElement(
+			'form',
+			{ onSubmit: function onSubmit(e) {
+					return handleSubmit(e);
+				} },
+			_react2.default.createElement('input', { type: 'email', placeholder: 'your email address',
+				onChange: function onChange(e) {
+					return handleChange(e.target.value);
+				}
+			}),
+			isValid ? submit : null
+		);
+	
+		function handleSubmit(e) {
+			if (e) {
+				e.preventDefault();
+			}
+			validateEmail();
+			if (isValid) {
+				sendEmail();
+			}
+		}
+		function handleChange(val) {
+			setEmail(val);
+			validateEmail();
+		}
+	
+		return _react2.default.createElement(
+			'section',
+			{ className: 'subscribe' },
+			_react2.default.createElement(
+				'h2',
+				null,
+				'subscribe'
+			),
+			_react2.default.createElement(
+				'p',
+				null,
+				'Stay updated on news'
+			),
+			success ? _react2.default.createElement(
+				'p',
+				null,
+				'Success!'
+			) : form
+		);
+	};
+	
+	var mapStateToProps = function mapStateToProps(state) {
+		return {
+			isValid: state.subscribe.valid,
+			success: state.subscribe.success
+		};
+	};
+	var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+		return {
+			setEmail: function setEmail(str) {
+				return dispatch({ type: 'SET_EMAIL', payload: str });
+			},
+			validateEmail: function validateEmail() {
+				return dispatch({ type: 'VALIDATE_EMAIL' });
+			},
+			sendEmail: function sendEmail() {
+				return dispatch({ type: 'MOCK_SENDING_EMAIL' });
+			}
+		};
+	};
+	exports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Subscribe);
+
+/***/ },
+/* 310 */
 /*!************************************************!*\
   !*** ./~/bootstrap/dist/css/bootstrap.min.css ***!
   \************************************************/
@@ -34334,10 +34395,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../../css-loader!./bootstrap.min.css */ 310);
+	var content = __webpack_require__(/*! !./../../../css-loader!./bootstrap.min.css */ 311);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../../style-loader/addStyles.js */ 312)(content, {});
+	var update = __webpack_require__(/*! ./../../../style-loader/addStyles.js */ 313)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -34354,13 +34415,13 @@
 	}
 
 /***/ },
-/* 310 */
+/* 311 */
 /*!***************************************************************!*\
   !*** ./~/css-loader!./~/bootstrap/dist/css/bootstrap.min.css ***!
   \***************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../../css-loader/lib/css-base.js */ 311)();
+	exports = module.exports = __webpack_require__(/*! ./../../../css-loader/lib/css-base.js */ 312)();
 	// imports
 	
 	
@@ -34371,7 +34432,7 @@
 
 
 /***/ },
-/* 311 */
+/* 312 */
 /*!**************************************!*\
   !*** ./~/css-loader/lib/css-base.js ***!
   \**************************************/
@@ -34430,7 +34491,7 @@
 
 
 /***/ },
-/* 312 */
+/* 313 */
 /*!*************************************!*\
   !*** ./~/style-loader/addStyles.js ***!
   \*************************************/
@@ -34685,7 +34746,7 @@
 
 
 /***/ },
-/* 313 */
+/* 314 */
 /*!**********************************************!*\
   !*** ./~/react-select/dist/react-select.css ***!
   \**********************************************/
@@ -34694,10 +34755,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../css-loader!./react-select.css */ 314);
+	var content = __webpack_require__(/*! !./../../css-loader!./react-select.css */ 315);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../style-loader/addStyles.js */ 312)(content, {});
+	var update = __webpack_require__(/*! ./../../style-loader/addStyles.js */ 313)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -34714,13 +34775,13 @@
 	}
 
 /***/ },
-/* 314 */
+/* 315 */
 /*!*************************************************************!*\
   !*** ./~/css-loader!./~/react-select/dist/react-select.css ***!
   \*************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../css-loader/lib/css-base.js */ 311)();
+	exports = module.exports = __webpack_require__(/*! ./../../css-loader/lib/css-base.js */ 312)();
 	// imports
 	
 	
@@ -34731,7 +34792,7 @@
 
 
 /***/ },
-/* 315 */
+/* 316 */
 /*!*******************************!*\
   !*** ./src/styles/index.scss ***!
   \*******************************/
@@ -34740,10 +34801,10 @@
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 	
 	// load the styles
-	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./index.scss */ 316);
+	var content = __webpack_require__(/*! !./../../~/css-loader!./../../~/sass-loader!./index.scss */ 317);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 312)(content, {});
+	var update = __webpack_require__(/*! ./../../~/style-loader/addStyles.js */ 313)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -34760,18 +34821,18 @@
 	}
 
 /***/ },
-/* 316 */
+/* 317 */
 /*!**************************************************************!*\
   !*** ./~/css-loader!./~/sass-loader!./src/styles/index.scss ***!
   \**************************************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 311)();
+	exports = module.exports = __webpack_require__(/*! ./../../~/css-loader/lib/css-base.js */ 312)();
 	// imports
 	
 	
 	// module
-	exports.push([module.id, "* {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0; }\n\na {\n  text-decoration: none;\n  color: #000; }\n  a:focus, a:hover {\n    text-decoration: none;\n    color: #000; }\n\nul {\n  list-style: none; }\n\nimg {\n  max-width: 100%;\n  height: auto; }\n\n.wrapper {\n  padding: 0 1em; }\n\n@media screen and (min-width: 576px) {\n  .header__bottom {\n    border-top: 1px solid #D9D0D0;\n    border-bottom: 1px solid #D9D0D0; } }\n\n.logo {\n  padding-top: 1em;\n  padding-bottom: 1em; }\n  .logo a:hover {\n    opacity: .7; }\n\n.cart {\n  font: 12px 'Lato', sans-serif;\n  padding-top: 2em;\n  padding-bottom: 2em; }\n  .cart__text {\n    display: inline-block;\n    vertical-align: top; }\n    .cart__text span {\n      display: inline-block;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #848282;\n      margin: 18px 14px 0 0; }\n  .cart__number {\n    display: inline-block; }\n    .cart__number span {\n      height: 48px;\n      width: 48px;\n      display: table-cell;\n      text-align: center;\n      vertical-align: middle;\n      border: 2px solid #1f86da;\n      border-radius: 50%;\n      background: transparent;\n      color: #000; }\n  .cart__search {\n    display: inline-block;\n    vertical-align: top; }\n    .cart__search span {\n      display: inline-block;\n      margin: 19px 0 0 22px;\n      width: 14px;\n      height: 14px;\n      background: url(\"http://vladdev.zzz.com.ua/examples/eleken/images/loop.jpg\") no-repeat; }\n\n.main-nav {\n  font: 12px 'Lato', sans-serif;\n  text-transform: uppercase;\n  padding-top: 1em; }\n  .main-nav a {\n    color: #848282;\n    padding-right: 0;\n    padding-left: 0;\n    border-bottom: 2px solid transparent; }\n    .main-nav a:hover {\n      color: #000; }\n  .main-nav li:nth-child(4) a {\n    color: red; }\n  .main-nav .active {\n    color: #000; }\n  @media screen and (min-width: 576px) {\n    .main-nav .active {\n      border-bottom: 2px solid #1f86da; }\n    .main-nav li {\n      margin: 0 4em 0 0; }\n      .main-nav li:last-child {\n        margin-right: 0; }\n      .main-nav li:nth-child(4) a {\n        color: red; } }\n\n.sub-nav {\n  text-align: center;\n  font: 11px 'Lato', sans-serif;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  vertical-align: top; }\n  .sub-nav ul {\n    padding: 1em 0;\n    display: inline-block; }\n  .sub-nav li {\n    margin: 0 32px 0 0;\n    display: inline-block; }\n    .sub-nav li:last-child {\n      margin-right: 0; }\n  .sub-nav a {\n    color: #848282;\n    padding-right: 0;\n    padding-left: 0; }\n    .sub-nav a:hover {\n      color: #000; }\n  @media screen and (min-width: 576px) {\n    .sub-nav {\n      text-align: left;\n      display: inline-block;\n      width: 50%; } }\n\n.dropdown {\n  text-align: center; }\n  .dropdown__select {\n    display: inline-block;\n    text-align: left; }\n    .dropdown__select--curr {\n      width: 98px; }\n    .dropdown__select--lang {\n      width: 52px;\n      margin: 0 0px 0 9px; }\n  @media screen and (min-width: 576px) {\n    .dropdown {\n      width: 50%;\n      display: inline-block;\n      text-align: right; }\n      .dropdown__greyline {\n        display: inline-block;\n        height: 46px;\n        width: 1px;\n        background: #D9D0D0;\n        vertical-align: bottom;\n        margin: 0 0 0 8px; } }\n\n.Select-arrow {\n  border: none;\n  display: inline-block;\n  width: 7px;\n  height: 4px;\n  top: 0 !important;\n  margin: 0 0 3px;\n  background: url(\"http://vladdev.zzz.com.ua/examples/eleken/images/arrow.png\") no-repeat; }\n\n.Select-control {\n  border: none;\n  border-radius: 0;\n  cursor: pointer; }\n  .Select-control:hover {\n    box-shadow: none; }\n\n.Select-value-label {\n  font: 11px 'Lato', sans-serif;\n  letter-spacing: 1px;\n  color: #848282 !important;\n  text-transform: uppercase; }\n\n.Select-menu-outer {\n  font: 11px 'Lato', sans-serif;\n  letter-spacing: 1px;\n  color: #848282 !important;\n  text-transform: uppercase; }\n\n.catalog-nav {\n  font: 12px 'Lato', sans-serif;\n  text-transform: uppercase;\n  padding: 1em 0;\n  margin: 0 0 2em; }\n  .catalog-nav li {\n    margin-bottom: 1em; }\n    .catalog-nav li:last-child {\n      margin-bottom: 0; }\n  .catalog-nav a {\n    color: #848282;\n    padding-right: 0;\n    padding-left: 0;\n    border-bottom: 2px solid transparent; }\n    .catalog-nav a:hover {\n      color: #000; }\n  .catalog-nav .active {\n    color: #000; }\n  @media screen and (min-width: 576px) {\n    .catalog-nav .active {\n      border-bottom: 2px solid #1f86da; }\n    .catalog-nav li {\n      margin: 0 4em 0 0; }\n      .catalog-nav li:last-child {\n        margin-right: 0; } }\n\n.products {\n  font: 12px 'Lato', sans-serif;\n  text-align: center;\n  max-width: 1120px;\n  margin: 0 auto; }\n  @media screen and (min-width: 420px) {\n    .products {\n      text-align: left; } }\n  .products p {\n    margin: 0;\n    color: #848282; }\n  .products a:hover {\n    opacity: .8; }\n  .products__item {\n    position: relative;\n    display: inline-block;\n    max-width: 262px;\n    vertical-align: top;\n    text-align: center; }\n    @media screen and (min-width: 420px) and (max-width: 579px) {\n      .products__item {\n        margin: 0 2% 2% 0;\n        width: 49%; }\n        .products__item:nth-child(2n) {\n          margin-right: 0; } }\n    @media screen and (min-width: 580px) and (max-width: 767px) {\n      .products__item {\n        margin: 0 2% 2% 0;\n        width: 32%; }\n        .products__item:nth-child(3n) {\n          margin-right: 0; } }\n    @media screen and (min-width: 768px) {\n      .products__item {\n        margin: 0 2% 2% 0;\n        width: 23.5%; }\n        .products__item:nth-child(4n) {\n          margin-right: 0; } }\n  .products__new {\n    position: absolute;\n    z-index: 1;\n    text-transform: uppercase;\n    color: #fff;\n    background: red;\n    padding: 2px 6px;\n    border-radius: 1em;\n    font-size: 10px;\n    left: 0;\n    margin: 10px 0 0 10px; }\n  .products__sale {\n    color: red; }\n  .products .line-through {\n    text-decoration: line-through;\n    margin-right: 5px; }\n\n@media screen and (min-width: 640px) and (max-width: 767px) {\n  .projects__item {\n    margin: 0 2% 2% 0;\n    width: 49%; }\n    .projects__item:nth-child(2n) {\n      margin-right: 0; } }\n\n@media screen and (min-width: 768px) and (max-width: 1220px) {\n  .projects__item {\n    margin: 0 2% 2% 0;\n    width: 32%; }\n    .projects__item:nth-child(3n) {\n      margin-right: 0; } }\n\n@media screen and (min-width: 1221px) {\n  .projects__item {\n    margin: 0 2% 2% 0;\n    width: 23.5%; }\n    .projects__item:nth-child(4n) {\n      margin-right: 0; } }\n", ""]);
+	exports.push([module.id, "* {\n  box-sizing: border-box;\n  padding: 0;\n  margin: 0; }\n\na {\n  text-decoration: none;\n  color: #000; }\n  a:focus, a:hover {\n    text-decoration: none;\n    color: #000; }\n\nul {\n  list-style: none; }\n\nimg {\n  max-width: 100%;\n  height: auto; }\n\n.wrapper {\n  padding: 0 1em; }\n\n@media screen and (min-width: 576px) {\n  .header__bottom {\n    border-top: 1px solid #D9D0D0;\n    border-bottom: 1px solid #D9D0D0; } }\n\n.logo {\n  padding-top: 1em;\n  padding-bottom: 1em; }\n  .logo a:hover {\n    opacity: .7; }\n\n.cart {\n  font: 12px 'Lato', sans-serif;\n  padding-top: 2em;\n  padding-bottom: 2em; }\n  .cart__text {\n    display: inline-block;\n    vertical-align: top; }\n    .cart__text span {\n      display: inline-block;\n      text-transform: uppercase;\n      letter-spacing: 1px;\n      color: #848282;\n      margin: 18px 14px 0 0; }\n  .cart__number {\n    display: inline-block; }\n    .cart__number span {\n      height: 48px;\n      width: 48px;\n      display: table-cell;\n      text-align: center;\n      vertical-align: middle;\n      border: 2px solid #1f86da;\n      border-radius: 50%;\n      background: transparent;\n      color: #000; }\n  .cart__search {\n    display: inline-block;\n    vertical-align: top; }\n    .cart__search span {\n      display: inline-block;\n      margin: 19px 0 0 22px;\n      width: 14px;\n      height: 14px;\n      background: url(\"http://vladdev.zzz.com.ua/examples/eleken/images/loop.jpg\") no-repeat; }\n\n.main-nav {\n  font: 12px 'Lato', sans-serif;\n  text-transform: uppercase;\n  padding-top: 1em; }\n  .main-nav a {\n    color: #848282;\n    padding-right: 0;\n    padding-left: 0;\n    border-bottom: 2px solid transparent; }\n    .main-nav a:hover {\n      color: #000; }\n  .main-nav li:nth-child(4) a {\n    color: red; }\n  .main-nav .active {\n    color: #000; }\n  @media screen and (min-width: 576px) {\n    .main-nav .active {\n      border-bottom: 2px solid #1f86da; }\n    .main-nav li {\n      margin: 0 4em 0 0; }\n      .main-nav li:last-child {\n        margin-right: 0; }\n      .main-nav li:nth-child(4) a {\n        color: red; } }\n\n.sub-nav {\n  text-align: center;\n  font: 11px 'Lato', sans-serif;\n  letter-spacing: 1px;\n  text-transform: uppercase;\n  vertical-align: top; }\n  .sub-nav ul {\n    padding: 1em 0;\n    display: inline-block; }\n  .sub-nav li {\n    margin: 0 32px 0 0;\n    display: inline-block; }\n    .sub-nav li:last-child {\n      margin-right: 0; }\n  .sub-nav a {\n    color: #848282;\n    padding-right: 0;\n    padding-left: 0; }\n    .sub-nav a:hover {\n      color: #000; }\n  @media screen and (min-width: 576px) {\n    .sub-nav {\n      text-align: left;\n      display: inline-block;\n      width: 50%; } }\n\n.dropdown {\n  text-align: center; }\n  .dropdown__select {\n    display: inline-block;\n    text-align: left; }\n    .dropdown__select--curr {\n      width: 98px; }\n    .dropdown__select--lang {\n      width: 52px;\n      margin: 0 0px 0 9px; }\n  @media screen and (min-width: 576px) {\n    .dropdown {\n      width: 50%;\n      display: inline-block;\n      text-align: right; }\n      .dropdown__greyline {\n        display: inline-block;\n        height: 46px;\n        width: 1px;\n        background: #D9D0D0;\n        vertical-align: bottom;\n        margin: 0 0 0 8px; } }\n\n.Select-arrow {\n  border: none;\n  display: inline-block;\n  width: 7px;\n  height: 4px;\n  top: 0 !important;\n  margin: 0 0 3px;\n  background: url(\"http://vladdev.zzz.com.ua/examples/eleken/images/arrow.png\") no-repeat; }\n\n.Select-control {\n  border: none;\n  border-radius: 0;\n  cursor: pointer; }\n  .Select-control:hover {\n    box-shadow: none; }\n\n.Select-value-label {\n  font: 11px 'Lato', sans-serif;\n  letter-spacing: 1px;\n  color: #848282 !important;\n  text-transform: uppercase; }\n\n.Select-menu-outer {\n  font: 11px 'Lato', sans-serif;\n  letter-spacing: 1px;\n  color: #848282 !important;\n  text-transform: uppercase; }\n\n.catalog-nav {\n  font: 12px 'Lato', sans-serif;\n  text-transform: uppercase;\n  padding: 1em 0;\n  margin: 0 0 2em; }\n  .catalog-nav li {\n    margin-bottom: 1em; }\n    .catalog-nav li:last-child {\n      margin-bottom: 0; }\n  .catalog-nav a {\n    color: #848282;\n    padding-right: 0;\n    padding-left: 0;\n    border-bottom: 2px solid transparent; }\n    .catalog-nav a:hover {\n      color: #000; }\n  .catalog-nav .active {\n    color: #000; }\n  @media screen and (min-width: 576px) {\n    .catalog-nav .active {\n      border-bottom: 2px solid #1f86da; }\n    .catalog-nav li {\n      margin: 0 4em 0 0; }\n      .catalog-nav li:last-child {\n        margin-right: 0; } }\n\n.products {\n  font: 12px 'Lato', sans-serif;\n  text-align: center;\n  max-width: 1120px;\n  margin: 0 auto; }\n  @media screen and (min-width: 420px) {\n    .products {\n      text-align: left; } }\n  .products p {\n    margin: 0;\n    text-transform: capitalize;\n    font-size: 14px;\n    color: #000; }\n  .products a {\n    display: inline-block;\n    color: #848282; }\n    .products a:hover {\n      opacity: .8; }\n  .products__item {\n    position: relative;\n    display: inline-block;\n    max-width: 262px;\n    vertical-align: top;\n    text-align: center; }\n    @media screen and (min-width: 420px) and (max-width: 579px) {\n      .products__item {\n        margin: 0 2% 2% 0;\n        width: 49%; }\n        .products__item:nth-child(2n) {\n          margin-right: 0; } }\n    @media screen and (min-width: 580px) and (max-width: 767px) {\n      .products__item {\n        margin: 0 2% 2% 0;\n        width: 32%; }\n        .products__item:nth-child(3n) {\n          margin-right: 0; } }\n    @media screen and (min-width: 768px) {\n      .products__item {\n        margin: 0 2% 2% 0;\n        width: 23.5%; }\n        .products__item:nth-child(4n) {\n          margin-right: 0; } }\n  .products__new {\n    position: absolute;\n    z-index: 1;\n    text-transform: uppercase;\n    color: #fff;\n    background: red;\n    padding: 2px 6px;\n    border-radius: 1em;\n    font-size: 10px;\n    left: 0;\n    margin: 10px 0 0 10px; }\n  .products__sale {\n    color: red; }\n  .products .line-through {\n    text-decoration: line-through;\n    margin-right: 5px; }\n  .products__more {\n    text-align: center; }\n    .products__more a {\n      text-transform: uppercase;\n      padding: 1em;\n      font-size: 14px; }\n\n.subscribe {\n  font-family: 'Lato', sans-serif;\n  padding: 5em 0;\n  background: #1f86da;\n  text-align: center; }\n  .subscribe h2 {\n    text-transform: uppercase;\n    font-size: 1rem; }\n  .subscribe p {\n    font-size: 2em;\n    color: white; }\n  .subscribe input[type=\"email\"] {\n    outline: none;\n    background: #1f86da;\n    border: 1px solid #fff;\n    color: #fff;\n    border-radius: 1.5em;\n    padding: .5em 2em .5em 1em;\n    text-transform: uppercase; }\n    .subscribe input[type=\"email\"]::-webkit-input-placeholder {\n      color: #fff;\n      font-size: 12px; }\n    .subscribe input[type=\"email\"]::-moz-placeholder {\n      color: #fff;\n      font-size: 12px; }\n    .subscribe input[type=\"email\"]:-ms-input-placeholder {\n      color: #fff;\n      font-size: 12px; }\n    .subscribe input[type=\"email\"]:-moz-placeholder {\n      color: #fff;\n      font-size: 12px; }\n  .subscribe input[type=\"email\"]:focus {\n    border: 1px solid #fff; }\n  .subscribe form {\n    position: relative;\n    display: inline-block; }\n  .subscribe .submit {\n    cursor: pointer;\n    color: #fff;\n    position: absolute;\n    right: 0;\n    padding: 0 .5em;\n    font-size: 28px; }\n    .subscribe .submit:hover {\n      opacity: .8; }\n\n@media screen and (min-width: 640px) and (max-width: 767px) {\n  .projects__item {\n    margin: 0 2% 2% 0;\n    width: 49%; }\n    .projects__item:nth-child(2n) {\n      margin-right: 0; } }\n\n@media screen and (min-width: 768px) and (max-width: 1220px) {\n  .projects__item {\n    margin: 0 2% 2% 0;\n    width: 32%; }\n    .projects__item:nth-child(3n) {\n      margin-right: 0; } }\n\n@media screen and (min-width: 1221px) {\n  .projects__item {\n    margin: 0 2% 2% 0;\n    width: 23.5%; }\n    .projects__item:nth-child(4n) {\n      margin-right: 0; } }\n", ""]);
 	
 	// exports
 

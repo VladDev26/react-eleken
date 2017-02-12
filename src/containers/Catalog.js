@@ -15,10 +15,11 @@ class Catalog extends Component{
 	}
 	render(){
 		return (
-			<div className="">
+			<main>
 				<CatalogNav properties={this.props} />
+				
 				<Products properties={this.props} />
-			</div>
+			</main>
 		);
 	}
 };

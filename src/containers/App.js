@@ -5,6 +5,7 @@ import { browserHistory } from 'react-router';
 
 
 import Header from '../components/Header';
+import Subscribe from '../components/Subscribe';
 
 
 class App extends Component{
@@ -15,26 +16,13 @@ class App extends Component{
 	render(){
 		return(
 			<div className="wrapper">
-				
+				<Header />
 				{this.props.children}
+				<Subscribe />
 			</div>
 		);
 	}
 }
-// class App extends Component{
-// 	componentDidMount(){
-// 		browserHistory.push('catalog');
-// 	}
-
-// 	render(){
-// 		return(
-// 			<div className="wrapper">
-// 				<Header />
-// 				{this.props.children}
-// 			</div>
-// 		);
-// 	}
-// }
 
 
 const mapStateToProps = state => {

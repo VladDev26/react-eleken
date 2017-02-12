@@ -33,7 +33,9 @@ render(
 		<Router history={browserHistory}>
 			<Route path="/" component={App}>
  				<Route path={'home'} component={Home} />
- 				<Route path={'catalog'} component={Catalog} />
+ 				<Route path={'catalog'} component={Catalog}>
+ 					
+ 				</Route>
  				<Route path={'news'} component={News} />
  				<Route path={'sale'} component={Sale} />
  				<Route path={'about'} component={About} />

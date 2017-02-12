@@ -6,6 +6,16 @@ const Products = props => {
 		setProductsLimit, limitProducts
 	} = props.properties;
 	
+	let moreBtn = (
+		<div className="products__more">
+		<a href="javascript:void 0;" 
+			onClick={() => {
+				setProductsLimit(limit + 1);
+				limitProducts();
+			}}>Load more...</a>
+		</div>
+	);
+
 	return(
     	<div className="products">
 			{products.length ? products.map(p => {
@@ -35,17 +45,10 @@ const Products = props => {
 				)
 			}) : 'No items...'}
 
-			{filtered.length != limit ? (
-				<div>
-				<a href="javascript:void 0;" 
-					onClick={() => {
-						setProductsLimit(limit + 1);
-						limitProducts();
-					}}>Load more...</a>
-				</div>
-			) : null}
+			{filtered.length != products.length ? moreBtn : null}
 		</div>
 	);
 };
 
 export default Products;
+
