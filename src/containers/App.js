@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
 import { hashHistory } from 'react-router';
 
 
 
 import Header from '../components/Header';
 import Subscribe from '../components/Subscribe';
+import Footer from '../components/Footer';
 
 
 class App extends Component{
@@ -19,17 +19,10 @@ class App extends Component{
 				<Header />
 				{this.props.children}
 				<Subscribe />
+				<Footer />
 			</div>
 		);
 	}
 }
+export default App;
 
-
-const mapStateToProps = state => {
-	return {};
-};
-const mapDispatchToProps = dispatch => {
-	return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps, null, {pure:false})(App);

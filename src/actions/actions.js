@@ -1,18 +1,3 @@
-// function authHasErrored(bool) {
-//     return {
-//         type: 'AUTH_HAS_ERRORED',
-//         hasErrored: bool
-//     };
-// }
-
-// function authSetToken(token) {
-//     return {
-//         type: 'AUTH_SET_TOKEN',
-//         authToken: token
-//     };
-// }
-
-
 export function setActiveClass(obj) {
     return {
         type: 'SET_ACTIVE_CLASS',

@@ -1,36 +1,35 @@
 import Catalog from '../containers/Catalog';
-import {Home, News, Sale, About, Contact} from '../components/Sections';
 
 const navbar = [
 	{
 		name: 'home',
 		path: 'home',
-		component: Home
+		mainNavClasses: 'main-nav__link'
 	},
 	{
 		name: 'catalog',
 		path: 'catalog',
-		component: Catalog
+		mainNavClasses: 'main-nav__link'
 	},
 	{
 		name: 'news',
 		path: 'news',
-		component: News
+		mainNavClasses: 'main-nav__link'
 	},
 	{
 		name: 'sale',
 		path: 'sale',
-		component: Sale
+		mainNavClasses: 'main-nav__link main-nav__link--sale'
 	},
 	{
 		name: 'about',
 		path: 'about',
-		component: About
+		mainNavClasses: 'main-nav__link'
 	},
 	{
 		name: 'contact',
 		path: 'contact',
-		component: Contact
+		mainNavClasses: 'main-nav__link'
 	}
 ];
 export default navbar;

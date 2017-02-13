@@ -1,5 +1,11 @@
+//576px
+//768px
+//920px
+//1180px
+
 .products{
-	font: 12px 'Lato', sans-serif;
+	font-family: $font1;
+	font-size: 12px;
 	text-align: center;
 	max-width: 1120px;
 	margin: 0 auto;
@@ -8,6 +14,7 @@
 	p{
 		margin: 0;
 		text-transform: capitalize;
+		font-family: $font2;
 		font-size: 14px;
 		color: #000;
 	}
@@ -22,6 +29,7 @@
 		max-width: 262px;
 		vertical-align: top;
 		text-align: center;
+		margin-bottom: 2.5em;
 
 		@include mQ(420px, 579px){
 			@include grid(2, 2%);
@@ -30,7 +38,7 @@
 			@include grid(3, 2%);
 		}
 		@include mQ(768px){
-			@include grid(4, 2%);
+			@include grid(4, 3%);
 		}
 	}
 

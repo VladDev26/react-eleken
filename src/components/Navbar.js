@@ -5,14 +5,10 @@ import navbar from '../const/navbar';
 
 const Navbar = props => {
 	return(
-    	<ul className="nav flex-column flex-sm-row justify-content-center main-nav">
-			{navbar.map((el,i) => (
-				<li className="nav-item" key={i}>
-					<Link 
-						to={'/' + el.path} 
-						className="nav-link text-center" 
-						activeClassName="active"
-					>
+    	<ul className="main-nav">
+			{navbar.map(el => (
+				<li className="main-nav__item" key={el.path}>
+					<Link className={el.mainNavClasses} to={'/' + el.path} activeClassName="active">
 						{el.name}
 					</Link>
 				</li>

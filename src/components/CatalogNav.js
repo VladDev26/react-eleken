@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const CatalogNav = props => {
-	const productsLimit = 1;
+	const productsLimit = 8;
 
 	let {
 		catalogNav, setActiveClass, setProductsFilter, 
@@ -18,11 +18,11 @@ const CatalogNav = props => {
 	}
 	
 	return(
-		<ul className="nav flex-column flex-sm-row justify-content-center catalog-nav">
+		<ul className="catalog-nav">
 			{catalogNav.map(el => (
-				<li key={el.path}>
+				<li className="catalog-nav__item" key={el.path}>
 					<a href="javascript:void 0;" 
-						className={el.isActive ? 'active' : ''} 
+						className={el.isActive ? 'catalog-nav__link active' : 'catalog-nav__link'} 
 						onClick={ () => handleClick(el.path) }
 					>
 						{el.name}

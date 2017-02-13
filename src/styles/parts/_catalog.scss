@@ -1,32 +1,45 @@
+//576px
+//768px
+//920px
+//1180px
+
 .catalog-nav{
-	font: 12px 'Lato', sans-serif;
+	font-family: $font1;
+	font-size: 12px;
 	text-transform: uppercase;
-	padding: 1em 0;
-	margin: 0 0 2em;
-	li{
-		margin-bottom: 1em; 
-		&:last-child{margin-bottom: 0;}
-	}
-	a{
-		color: $grey;
-		padding-right: 0;
-		padding-left: 0;
-		border-bottom: 2px solid transparent;
-		
-		&:hover{color: $black;}
-	}
-
-	.active{ color: $black; }
-
+	padding-bottom: 2.5em;
 	@include mQ(576px){
-		.active{
-			border-bottom: 2px solid $blue;
-		}
-		li{
-			margin: 0 4em 0 0;
+		text-align: center;
+	}
+	@include mQ(768px){
+	}
+
+	&__item{
+		text-align: center;
+		@include mQ(576px){
+			display: inline-block;
+			margin: 0 3em 0 0;
 			&:last-child{
 				margin-right: 0;
 			}
 		}
+		@include mQ(920px){
+			margin: 0 4em 0 0;
+		}
+	}
+	&__link{
+		color: $grey;
+		padding: .5em 1em;
+		border-bottom: 2px solid transparent;
+		
+		&--sale{ color: red; }
+		&:hover{ color: $black; }
+		@include mQ(576px){ padding: .5em 0; }
+	}
+
+
+	.active{ 
+		color: $black;
+		@include mQ(576px){ border-bottom: 2px solid $blue; }
 	}
 }

@@ -6,13 +6,10 @@ import { Router, Route, hashHistory } from 'react-router';
 
 import configureStore from './store/configureStore';
 
-import navbar from './const/navbar';
-
 import App from './containers/App';
 import Catalog from './containers/Catalog';
 import {Home, News, Sale, About, Contact} from './components/Sections';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-select/dist/react-select.css';
 import './styles/index.scss';
 
@@ -33,9 +30,7 @@ render(
 		<Router history={hashHistory}>
 			<Route path="/" component={App}>
  				<Route path={'home'} component={Home} />
- 				<Route path={'catalog'} component={Catalog}>
- 					
- 				</Route>
+ 				<Route path={'catalog'} component={Catalog} />
  				<Route path={'news'} component={News} />
  				<Route path={'sale'} component={Sale} />
  				<Route path={'about'} component={About} />
@@ -46,9 +41,4 @@ render(
 	document.getElementById('app')
 );
 
-
-
-// {navbar.map((item,i) => (
-//  	<Route path={item.name} component={item.component} key={i} />
-// ))}
 

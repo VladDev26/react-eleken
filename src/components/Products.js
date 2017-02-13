@@ -1,5 +1,7 @@
 import React from 'react';
 
+import {NoItems} from './Sections';
+
 const Products = props => {
 	const {
 		products, limit, filtered, 
@@ -43,7 +45,7 @@ const Products = props => {
 						</a>
 					</div>
 				)
-			}) : 'No items...'}
+			}) : <NoItems />}
 
 			{filtered.length != products.length ? moreBtn : null}
 		</div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Cart = props => (
-	<div className="col-12 text-center cart">
+	<div className="cart">
 		<div className="cart__text">
 			<span>your bag</span>
 		</div>

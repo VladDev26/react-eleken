@@ -37,8 +37,8 @@ module.exports = {
     ],
   },
   plugins: [
-    // production,
-    // new webpack.optimize.UglifyJsPlugin()
+    production,
+    new webpack.optimize.UglifyJsPlugin()
   ]
 };
 

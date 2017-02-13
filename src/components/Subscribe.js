@@ -17,6 +17,7 @@ const Subscribe = props => {
 		</form>
 	);
 
+
 	function handleSubmit(e){
 		if(e){e.preventDefault();}
 		validateEmail();
@@ -27,11 +28,14 @@ const Subscribe = props => {
 		validateEmail();
 	}
 
+
 	return(
 		<section className="subscribe">
-			<h2>subscribe</h2>
-			<p>Stay updated on news</p>
-			{success ? <p>Success!</p> : form}
+			<div className="container">
+				<h2>subscribe</h2>
+				<p>Stay updated on news</p>
+				{success ? <p>Success!</p> : form}
+			</div>
 		</section>
 	);
 };

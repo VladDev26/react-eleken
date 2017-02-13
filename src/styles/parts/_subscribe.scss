@@ -1,5 +1,5 @@
 .subscribe{
-	font-family: 'Lato', sans-serif;
+	font-family: $font1;
 	padding: 5em 0;
 	background: $blue;
 	text-align: center;
@@ -9,8 +9,10 @@
 		font-size: 1rem;
 	}
 	p{
+		font-family: $font2;
 		font-size: 2em;
 		color: white;
+		padding: .5em 0 1em;
 	}
 	input[type="email"]{
 		outline: none;
@@ -20,20 +22,25 @@
 		border-radius: 1.5em;
 		padding: .5em 2em .5em 1em;
 		text-transform: uppercase;
+		font-size: 16px;
 
 		&::-webkit-input-placeholder {
+		  font-family: $font1;
 		  color: #fff;
 		  font-size: 12px;
 		}
 		&::-moz-placeholder {
+		  font-family: $font1;
 		  color: #fff;
 		  font-size: 12px;
 		}
 		&:-ms-input-placeholder {
+		  font-family: $font1;
 		  color: #fff;
 		  font-size: 12px;
 		}
 		&:-moz-placeholder {
+		  font-family: $font1;
 		  color: #fff;
 		  font-size: 12px;
 		}

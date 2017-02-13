@@ -9,17 +9,17 @@ class Catalog extends Component{
 		this.props.getCatalogNav();
 		this.props.setActiveClass('all');
 
-		this.props.setProductsLimit(1);
+		this.props.setProductsLimit(4);
 		this.props.filterProducts();
 		this.props.limitProducts();
 	}
 	render(){
 		return (
-			<main>
+			<div>
+				<h1 className="main-head">catalog</h1>
 				<CatalogNav properties={this.props} />
-				
 				<Products properties={this.props} />
-			</main>
+			</div>
 		);
 	}
 };
@@ -46,48 +46,3 @@ const mapDispatchToProps = dispatch => {
 
 export default connect(mapStateToProps, mapDispatchToProps)(Catalog);
 
-
-
-
-
-
-
-
-
-
-
-
-
-// class Catalog extends Component{
-// 	componentDidMount(){
-// 		this.props.getCatalogNav();
-// 		this.props.setActiveClass('all');
-
-// 		this.props.setProductsLimit(1);
-// 		this.props.filterProducts();
-// 	}
-// 	render(){
-// 		let {
-// 			products, limit, catalogNav,
-// 			filterProducts, setProductsLimit,
-// 			getCatalogNav, setActiveClass, setProductsTag
-// 		} = this.props;
-// 		return (
-// 			<div className="">
-// 				<CatalogNav 
-// 					catalogNav={catalogNav}
-// 					setActiveClass={setActiveClass} 
-// 					setProductsTag={setProductsTag}
-// 					setProductsLimit={setProductsLimit}
-// 					filterProducts={filterProducts}
-// 				/>
-// 				<Products 
-// 					limit={limit}
-// 					products={products} 
-// 					filterProducts={filterProducts}
-// 					setProductsLimit={setProductsLimit}
-// 				/>
-// 			</div>
-// 		);
-// 	}
-// };

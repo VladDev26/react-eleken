@@ -1,38 +1,109 @@
+//576px
+//768px
+//920px
+//1180px
+
 .header{
+	&__bottom{
+		padding: 1em 0;
+		border-bottom: 1px solid #D9D0D0;
+	}
 	@include mQ(576px){
 		&__bottom{
 			border-top: 1px solid #D9D0D0;
-			border-bottom: 1px solid #D9D0D0;
 		}
 	}
 }
 .logo{
-	padding-top: 1em;
-	padding-bottom: 1em;
+	text-align: center;
+	padding: 0 0 1em;
+	@include mQ(768px){
+		padding: 0;
+		text-align: left;
+		display: inline-block;
+		width: 15%;
+	}
 	a:hover{opacity: .7;}
 }
 
+.main-nav{
+	font-family: $font1;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding-top: 1em;
+	@include mQ(576px){
+		text-align: center;
+	}
+	@include mQ(768px){
+		display: inline-block;
+		width: 70%;
+		vertical-align: top;
+		text-align: center;
+		padding: 7px 0;
+	}
+
+	&__item{
+		text-align: center;
+		@include mQ(576px){
+			display: inline-block;
+			margin: 0 3em 0 0;
+			&:last-child{
+				margin-right: 0;
+			}
+		}
+		@include mQ(920px){
+			margin: 0 4em 0 0;
+		}
+	}
+	&__link{
+		color: $grey;
+		padding: .5em 1em;
+		border-bottom: 2px solid transparent;
+		
+		&--sale{ color: red; }
+		&:hover{ color: $black; }
+		@include mQ(576px){ padding: .5em 0; }
+	}
+
+
+	.active{ 
+		color: $black;
+		@include mQ(576px){ border-bottom: 2px solid $blue; }
+	}
+}
 .cart{
-	font: 12px 'Lato', sans-serif;
-	padding-top: 2em;
-	padding-bottom: 2em;
+	display: none;
+	font-family: $font1;
+	font-size: 12px;
+	padding: 2em 0;
+	text-align: center;
+
+	@include mQ(768px){
+		display: inline-block;
+		width: 15%;
+		text-align: right;
+		padding: 0;
+	}
 
 	&__text{
-		display: inline-block;
+		display: none;
 		vertical-align: top;
 		span{
 			display: inline-block;
 			text-transform: uppercase;
 			letter-spacing: 1px;
 			color: $grey;
-			margin: 18px 14px 0 0;
+			margin: 12px 14px 0 0;
+		}
+		@include mQ(1180px){
+			display: inline-block;
 		}
 	}
 	&__number{
 		display: inline-block;
 		span{
-			height: 48px;
-			width: 48px;
+			height: 38px;
+			width: 38px;
 			display: table-cell;
 			text-align: center;
 			vertical-align: middle;
@@ -47,7 +118,7 @@
 		vertical-align: top;
 		span{
 			display: inline-block;
-			margin: 19px 0 0 22px;
+			margin: 14px 0 0 22px;
 			width: 14px;
 			height: 14px;
 			background: url( $imgUrl + 'loop.jpg' ) no-repeat;
@@ -55,68 +126,43 @@
 	}
 }
 
-.main-nav{
-	font: 12px 'Lato', sans-serif;
-	text-transform: uppercase;
-	padding-top: 1em;
-	a{
-		color: $grey;
-		padding-right: 0;
-		padding-left: 0;
-		border-bottom: 2px solid transparent;
-		
-		&:hover{color: $black;}
-	}
 
-	li:nth-child(4) a{ color: red; }
 
-	.active{ color: $black; }
 
-	@include mQ(576px){
-		.active{
-			border-bottom: 2px solid $blue;
-		}
-		li{
-			margin: 0 4em 0 0;
-			&:last-child{
-				margin-right: 0;
-			}
-			&:nth-child(4) a{
-				color: red;
-			}
-		}
-	}
-}
+
+
+
 .sub-nav{
 	text-align: center;
-	font: 11px 'Lato', sans-serif;
+	font-family: $font1;
+	font-size: 11px;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	vertical-align: top;
-	ul{
-		padding: 1em 0;
+	@include mQ(576px){
+		text-align: left;
+		display: inline-block;
+		width: 50%;
+	}
+
+	&__list{
+		padding: 16px 0;
 		display: inline-block;
 	}
 	
-	li{
+	&__item{
 		margin: 0 32px 0 0;
 		display: inline-block;
 		&:last-child{
 			margin-right: 0;
 		}
 	}
-	a{
+	&__link{
 		color: $grey;
 		padding-right: 0;
 		padding-left: 0;
 		
 		&:hover{color: $black;}
-	}
-
-	@include mQ(576px){
-		text-align: left;
-		display: inline-block;
-		width: 50%;
 	}
 }
 
@@ -169,13 +215,15 @@
 		&:hover{box-shadow: none;}
 	}
 	&-value-label{
-		font: 11px 'Lato', sans-serif;
+		font-family: $font1;
+		font-size: 11px;
 		letter-spacing: 1px;
 		color: $grey !important;
 		text-transform: uppercase;
 	}
 	&-menu-outer{
-		font: 11px 'Lato', sans-serif;
+		font-family: $font1;
+		font-size: 11px;
 		letter-spacing: 1px;
 		color: $grey !important;
 		text-transform: uppercase;
