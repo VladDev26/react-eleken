@@ -12,32 +12,28 @@ var production = new webpack.DefinePlugin({
 module.exports = {
   entry: path.resolve(__dirname + '/src/index.js'),
   output: {
-    path: 'assets',
+    path: path.join(__dirname, "assets"),
     filename: 'bundle.js',
     publicPath: '/assets/'
   },
   
   module: {
-    loaders: [
+    rules: [
       { 
         test: /\.js$/, 
         exclude: /(node_modules)/,
         loader: 'babel-loader',
-        query: { presets: ['es2015', 'react', 'stage-2'] }
+        options: { presets: ['es2015', 'react', 'stage-2'] }
       },
       
-      { test: /\.css$/i, loader: 'style-loader!css-loader' },
-      { test: /\.scss$/i, loader: 'style-loader!css-loader!sass-loader' },
-
-      // IMAGES
       { 
-        test: /.*\.(gif|png|jpe?g|svg)$/i, 
-        loaders: [
-          "file?name=img/[name].[ext]",
-          // "image-webpack?optimizationLevel=7&progressive=true"
-        ]
+        test: /\.css$/i, 
+        use: ['style-loader', 'css-loader'] 
       },
-
+      { 
+        test: /\.scss$/i, 
+        use: ['style-loader', 'css-loader', 'sass-loader'] 
+      }
     ],
   },
   plugins: [
@@ -45,8 +41,4 @@ module.exports = {
     // new webpack.optimize.UglifyJsPlugin()
   ]
 };
-
-
-
-
 

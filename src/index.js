@@ -2,15 +2,15 @@ import React from 'react';
 import {render} from 'react-dom';
 import {Provider} from 'react-redux';
 
-import { Router, Route, browserHistory } from 'react-router';
+import { Router, Route, hashHistory } from 'react-router';
 
 import configureStore from './store/configureStore';
-import App from './containers/App';
 
 import navbar from './const/navbar';
 
-import {Home, News, Sale, About, Contact} from './components/Sections';
+import App from './containers/App';
 import Catalog from './containers/Catalog';
+import {Home, News, Sale, About, Contact} from './components/Sections';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-select/dist/react-select.css';
@@ -24,13 +24,13 @@ const store = configureStore(initialState);
 // 	console.log('st', store.getState());
 // });
 
-// browserHistory.listen( location =>  {
+// hashHistory.listen( location =>  {
 // 	console.log(location);
 // });
 
 render(
 	<Provider store={store}>
-		<Router history={browserHistory}>
+		<Router history={hashHistory}>
 			<Route path="/" component={App}>
  				<Route path={'home'} component={Home} />
  				<Route path={'catalog'} component={Catalog}>

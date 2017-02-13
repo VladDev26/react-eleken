@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { browserHistory } from 'react-router';
+import { hashHistory } from 'react-router';
 
 
 
@@ -10,7 +10,7 @@ import Subscribe from '../components/Subscribe';
 
 class App extends Component{
 	componentDidMount(){
-		browserHistory.push('catalog');
+		hashHistory.push('catalog');
 	}
 
 	render(){
